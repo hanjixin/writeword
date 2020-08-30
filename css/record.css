@@ -1,0 +1,205 @@
+@charset "utf-8";
+.record-right {
+  position: relative;
+  height: 100%;
+  margin-left: 220px;
+  padding: 86px 0 90px;
+  box-sizing: border-box;
+	background: #fff;
+	box-shadow: 0 3px 29px 0 rgba(63, 17, 17, .15);
+	border-radius: 6px;
+}
+
+.record-type {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 980px;
+  height: 66px;
+  box-sizing: border-box;
+  padding-left: 40px;
+  z-index: 2;
+  background: #fff;
+  box-shadow: 0 3px 29px 0 rgba(220, 220, 220, 0.95);
+  border-radius: 6px 6px 0 0;
+}
+
+.record-type li {
+  position: relative;
+  float: left;
+  margin-right: 55px;
+  cursor: pointer;
+  color: #000;
+  font-size: 20px;
+  line-height: 66px;
+  transition: .2s;
+}
+
+.record-type li::before {
+  content: " ";
+  display: block;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 3px;
+  background-color: #2e62e2;
+  border-radius: 2px;
+  transform: translateX(-50%);
+  transition: .5s;
+}
+
+.record-type .on,
+.record-type li:hover {
+  color: #2e62e2;
+}
+
+.record-type li:hover::before,
+.record-type .on::before {
+  width: 60%;
+}
+
+.page {
+  position: absolute;
+  left: 0;
+  bottom: 35px;
+  width: 980px;
+  text-align: center;
+}
+
+.page a ,
+.page span {
+  display: inline-block;
+  min-width: 26px;
+  height: 26px;
+  margin: 0 5px;
+  cursor: pointer;
+  background: #fafafa;
+	border-radius: 3px;
+  border: solid 1px #e5e5e5;
+  color: #999;
+  font-size: 14px;
+  line-height: 26px;
+  vertical-align: top;
+}
+
+.page span {
+  cursor:default;
+}
+
+.page a:hover {
+  opacity: .8;
+}
+
+.page .ui-page-current {
+  background: #2e62e2;
+  border-color: #2e62e2 ;
+  color: #fff;
+}
+
+.page svg {
+  width:20px;
+  height:20px;
+  margin-top:3px;
+  opacity: .4;
+}
+
+.page .ui-page-next svg {
+  transform:scaleX(-1)
+}
+
+.page span.ui-page-prev,
+.page span.ui-page-next {
+  opacity: .4;
+}
+
+/* 练习记录 列表 */
+ .record-box {
+  height: 100%;
+  overflow-y: auto;
+}
+
+.record-list dl {
+  width: 100%;
+  background: #f8f8f8;
+  text-align: center;
+}
+
+.record-list dt ,
+.record-list dd {
+  clear: both;
+  height: 50px;
+  overflow: hidden;
+  line-height: 50px;
+  text-align: center;
+}
+
+.record-list dt {
+  background: #2e62e2;
+  color: #fff;
+  font-weight: normal;
+}
+
+.record-list dd {
+  border-top: 2px solid #fff;
+  font-size: 16px;
+}
+
+.record-list dt div,
+.record-list dd div {
+  float: left;
+  width: 140px;
+}
+
+.record-list dt div:nth-child(1),
+.record-list dd div:nth-child(1) {
+  width: 300px;
+}
+
+.record-list dt div:nth-child(4),
+.record-list dd div:nth-child(4) {
+  width: 240px;
+}
+
+.record-list .detail-btn {
+  display: block;
+  width: 70px;
+  height: 28px;
+  margin: 11px auto;
+  cursor: pointer;
+  background: linear-gradient(90deg,#38b2ff ,	#2e62e2 33%);
+  background-size: 200%;
+  background-position: right bottom;
+  box-shadow: 0 3px 29px 0 rgba(46, 98, 226, 0.58);
+  border-radius: 28px;
+  color: #fff;
+  line-height: 28px;
+  transition: .5s;
+}
+
+.record-list .detail-btn:hover {
+  background-position: left top;
+}
+
+.ifnull {
+  display: none;
+  position: absolute;
+  left: 0;
+  top: 25%;
+  box-sizing: border-box;
+  width: 100%;
+  padding-top: 210px;
+  background: url(../images/pic01.png) no-repeat top;
+  font-size: 16px;
+  text-align: center;
+}
+
+.ifnull a {
+  color: #2e62e2;
+}
+
+.ifnull a:hover {
+  opacity: .8;
+}
+
+/* 练习记录 列表 end */

@@ -1,0 +1,146 @@
+@charset "utf-8";
+body {
+  background: #fff;
+}
+
+.header {
+  position: relative;
+}
+
+main {
+  padding-top: 0;
+  height: auto;
+}
+
+.banner1 {
+  height: 165px;
+  box-sizing: border-box;
+  padding-top: 54px;
+  background: url(../images/banner1.jpg) no-repeat center;
+}
+
+.banner h2 {
+  width: 496px;
+  height: 78px;
+  margin: 0 auto;
+  background: #2e62e2;
+  background-image: linear-gradient(163deg, #38b2ff 0%, #2e62e2 100%);
+  border-radius: 39px;
+  color: #fff;
+  font-size: 44px;
+  font-weight: normal;
+  line-height: 78px;
+  text-align: center;
+}
+
+.banner2 {
+  margin-top: -1px;
+  height: 165px;
+  background: url(../images/banner2.jpg) no-repeat center;
+}
+
+.banner3 {
+  height: 165px;
+  background: url(../images/banner3.jpg) no-repeat center;
+}
+.banner4 {
+  height: 165px;
+  background: url(../images/banner4.jpg) no-repeat center;
+}
+
+.inx-box01 {
+  margin: 80px auto;
+}
+
+.inx-box01 li {
+  width: 550px;
+  height: 590px;
+  padding-top: 42px;
+  box-sizing: border-box;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 3px 29px 0 rgba(211, 219, 234, .95);
+	border-radius: 20px;
+}
+
+.inx-box01 em {
+  display: block;
+  width: 136px;
+  height: 136px;
+  margin: 0 auto;
+  background: linear-gradient(163deg, #38b2ff , #2e62e2 ,#2e62e2 );
+  background-size: 200%;
+  background-position: left top;
+  border-radius: 100%;
+  box-shadow: 0 3px 29px 0 rgba(46, 98, 226, .58);
+  transition: .3s;
+}
+
+.inx-box01 li:hover em {
+  background-position: right bottom;
+  box-shadow: 0 3px 62px 0 rgba(46, 98, 226, .5);
+}
+
+.inx-box01 i {
+  display: block;
+  width: 136px;
+  height: 136px;
+}
+
+.inx-box01 .icon03 {
+  background: url(../images/icon03.png) no-repeat center;
+}
+
+.inx-box01 .icon04 {
+  background: url(../images/icon04.png) no-repeat center;
+}
+
+.inx-box01 h3 {
+  color: #000;
+  font-size: 30px;
+  font-weight: normal;
+  line-height: 76px;
+  text-align: center;
+}
+
+.inx-box01 p {
+  height: 144px;
+  margin: 5px 52px 50px;
+  font-size: 22px;
+  line-height: 36px;
+  text-align: justify;
+}
+
+.inx-box01 a {
+  display: block;
+  width: 320px;
+  height: 86px;
+  margin: 0 auto;
+  background: linear-gradient(90deg,#38b2ff ,	#2e62e2 33%);
+  background-size: 200%;
+  background-position: left top;
+  box-shadow: 0 3px 29px 0 rgba(46, 98, 226, 0.58);
+  border-radius: 86px;
+  color: #fff;
+  font-size: 30px;
+  line-height: 86px;
+  text-align: center;
+  transition: .5s;
+}
+
+.inx-box01 a:hover {
+  background-position: right bottom;
+}
+
+footer {
+  background: #f5f5f5;
+  color: #666;
+}
+
+footer a {
+  color: #666;
+}
+
+footer a:hover {
+  color: #2e62e2;
+}

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="utf-8">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-touch-fullscreen" content="yes">
+    <meta name="format-detection" content="telephone=no,email=no">
+    <meta name="viewport" content="width=device-width, user-scalable=0, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>练习记录-书记员速录系统_书记员看打速录考试_书记员听打速录培训-华图教育</title>
+    <meta name="keywords" content="书记员速录，书记员速录软件，书记员速录技巧">
+    <meta name="description" content="华图书记员速录系统提供2020全国书记员考试速录听看打测试及培训,考生可选择听打、看打模块进行练习, 所模块都有多种模式多篇文章选择，练习结束后可查看正确字数、正确率、打字速度等,提前进行速录备考，提高书记员速录技巧。">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/record.css">
+    <script src="js/jquery-2.1.4.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/babel-polyfill/6.0.14/polyfill.min.js"></script>
+    <script src="js/vue.js"></script>
+    <script src="js/md5.js"></script>
+  </head>
+  <body>
+
+    <!-- 头部 -->
+    <header class="header" id="header">
+      <div class="clearfix width" v-html="header"></div>
+    </header>
+    <!-- 头部 end -->
+
+    <main>
+      <div class="width clearfix main-width">
+        <!-- 左侧导航 -->
+        <div class="left-nav">
+          <span class="on" title="练习记录"><i class="icon106"></i>练习记录</span>
+        </div>
+        <!-- 左侧导航 end -->
+
+        <!-- 练习记录 列表 -->
+        <div class="record-right" >
+          <ul class="clearfix record-type" id="recordType">
+            <li class="on" data-type="161">听打练习</li>
+            <li data-type="160">看打练习</li>  
+          </ul>
+          
+          <div class="record-box">
+            <div class="record-list">
+              <dl id="recordList">
+                <dt>
+                  <div>试卷名称</div>
+                  <div>试卷类型</div>
+                  <div>音频速度</div>
+                  <div>练习时间</div>
+                  <div>详情</div>
+                </dt>
+                <record-tbody
+                  v-for="(record, index) in records" 
+                  :record="record"
+                  :key="index"
+                ></record-tbody>
+              </dl>
+            </div>
+          </div>
+          <div class="page-td">
+            <div class="clearfix page" id="recordPage">
+              <!-- <a href="#" title="首页">&lt;</a><a href="#">1</a><a class="thispage">2</a><a href="#">3</a><a href="#" title="末页">&gt;</a> -->
+            </div>
+          </div>
+          <div class="page-kd">
+            <div class="clearfix page" id="recordPage2">
+              <!-- <a href="#" title="首页">&lt;</a><a href="#">1</a><a class="thispage">2</a><a href="#">3</a><a href="#" title="末页">&gt;</a> -->
+            </div>
+          </div>
+
+          <div class="ifnull iftdnull">暂无练习记录，马上去<a href="list-td.html" title="练习听打">练习听打</a>吧~</div>
+          <div class="ifnull ifkdnull">暂无练习记录，马上去<a href="list-kd.html" title="练习看打">练习看打</a>吧~</div>
+        </div>
+        <!-- 练习记录 列表 end -->
+      </div>
+    </main>
+
+    <footer class="footer" id="footer" v-html="footer"></footer>
+
+    <!-- 登录弹窗 -->
+    <div class="pop-layer" id="popLayer" >
+      <pop-layer></pop-layer>
+    </div>
+
+    <!-- 练习报告弹窗 -->
+    <div class="pop-layer" id="popReport" >
+      <pop-report></pop-report>
+    </div>
+    
+    <!-- <script src="js/main.js"></script> -->
+    <script src="js/Pagination.js"></script>
+    <!-- <script src="js/record.js"></script> -->
+    <script src="dist/js/main.js"></script>
+    <script src="dist/js/record.js"></script>
+    <!-- 统计代码 -->
+    <script type="text/javascript" src="https://www.huatu.com/images/js/click_com.js"></script>
+  </body>
+</html>

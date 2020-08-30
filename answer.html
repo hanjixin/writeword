@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="utf-8">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-touch-fullscreen" content="yes">
+    <meta name="format-detection" content="telephone=no,email=no">
+    <meta name="viewport" content="width=device-width, user-scalable=0, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>查看答案-书记员速录系统_书记员看打速录考试_书记员听打速录培训-华图教育</title>
+    <meta name="keywords" content="书记员速录，书记员速录软件，书记员速录技巧">
+    <meta name="description" content="华图书记员速录系统提供2020全国书记员考试速录听看打测试及培训,考生可选择听打、看打模块进行练习, 所模块都有多种模式多篇文章选择，练习结束后可查看正确字数、正确率、打字速度等,提前进行速录备考，提高书记员速录技巧。">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/detail.css">
+    <script src="js/jquery-2.1.4.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/babel-polyfill/6.0.14/polyfill.min.js"></script>
+    <script src="js/vue.js"></script>
+    <script src="js/md5.js"></script>
+  </head>
+  <body>
+
+    <!-- 头部 -->
+    <header class="header" id="header">
+      <div class="clearfix width" v-html="header"></div>
+    </header>
+    <!-- 头部 end -->
+
+    <main>
+      <div class="width clearfix main-width">
+        <!-- 左侧导航 -->
+        <div class="left-nav" id="leftNav">
+          <left-nav 
+            v-for="(xueke, index) in xuekes" 
+            :index="index+1"
+            :xueke="xueke"
+            :key="xueke.id"
+          ></left-nav>
+        </div>
+        <!-- 左侧导航 end -->
+
+        <!-- 答案 详情 -->
+        <div class="detail-right kddetail-right" id="kddetail">
+          <!-- 答案区 -->
+          <div class="detail-box kddetail-box">
+            <!-- 题目信息 -->
+            <div class="clearfix detail-info">
+              <h3 id="questionTitle">练习名称：<b>{{stem}}</b></h3>
+              <p>
+                <span><i class="icon07"></i>打字速度：<em class="speed">{{speed}}字/分</em></span>
+                <span><i class="icon08"></i>退格次数：<em class="dtimes">{{backnum}}</em></span>
+                <span><i class="icon09"></i>计时：<em class="time" id="showTime">{{usetime}}</em></span>
+              </p>
+            </div>
+            <!-- 答案内容 -->
+            <div class="kddetail-pro">
+              <ul >
+                <kddetail v-for="(json_answer, index) in answers"
+                :index="index"
+                :json_answer="json_answer"
+                :key="index"
+                ></kddetail>
+              </ul>
+            </div>
+          </div>
+          <!-- 按钮组 -->
+          <div class="btn-box kdbtn-box">
+            <input type="button" @click="reDo()" class="btn resetBtn" value="重做">
+          </div>
+        </div>
+        <!-- 答案详情 end -->
+      </div>
+    </main>
+
+    <footer class="footer" id="footer" v-html="footer"></footer>
+
+    <!-- 登录弹窗 -->
+    <div class="pop-layer" id="popLayer" >
+      <pop-layer></pop-layer>
+    </div>
+
+    <!-- <script src="js/main.js"></script>
+    <script src="js/answer.js"></script> -->
+    <script src="dist/js/main.js"></script>
+    <script src="dist/js/answer.js"></script>
+    <!-- 统计代码 -->
+    <script type="text/javascript" src="https://www.huatu.com/images/js/click_com.js"></script>
+  </body>
+</html>
