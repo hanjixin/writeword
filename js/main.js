@@ -112,6 +112,7 @@ let popLayer = `
 <div class="pop-box pop-login" id="popLogin">
   <span class="pop-close" @click="closePop"></span>
   <h3 class="pop-tit">登录</h3>
+  <div class="login-tips"></div>
   <form id="loginForm">
     <div class="clearfix in-box">
       <input type="text" class="in-text" v-model="phone" name="phone" value="" placeholder="请输入手机号" autocomplete="off">
@@ -352,7 +353,7 @@ Vue.component('pop-layer', {
               that.loginMessage = null;
               that.codeError++;
               //短信验证码连续输入错误3次则必须输入图形验证码
-              if(that.codeError >='3'){
+              if(that.codeError >= 3){
                 that.showVerify = true;
               }
             }else {
@@ -385,6 +386,7 @@ Vue.component('pop-layer', {
     },
     closePop: function (event) {
       $('#popLayer, #popReport').hide();
+      $('.login-tips').hide()// 隐藏登录后才可查看报告
     }
   },
   template: popLayer

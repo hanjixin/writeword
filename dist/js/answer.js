@@ -82,7 +82,6 @@ new Vue({
     answers: null
   },
   created: function created() {
-
     var jsonData;
     var questionData;
 
@@ -120,7 +119,7 @@ new Vue({
 
     $.ajax({
       headers: {
-        'Authorization': 'Bearer ' + getCookie('token')
+        Authorization: 'Bearer ' + getCookie('token')
       },
       url: urlConfig.getrecorddetail.url,
       method: urlConfig.getrecorddetail.method,
@@ -154,9 +153,13 @@ new Vue({
 
     console.log(jsonData, jsonData.stem_arr);
     for (var i = 0; i < Math.ceil(tmpLeng / limitLeng); i++) {
-      var tmp = { 'stem': questionData.answer.substr(i * limitLeng, limitLeng), 'answer': jsonData.stem_arr[0].substr(i * limitLeng, limitLeng) };
+      var tmp = {
+        stem: questionData.answer.substr(i * limitLeng, limitLeng),
+        answer: jsonData.stem_arr[0].substr(i * limitLeng, limitLeng)
+      };
       this.answers.push(tmp);
     }
+    $('#kddetail').show();
   },
   methods: {
     reDo: function reDo() {

@@ -4,24 +4,29 @@ Vue.component('left-nav', {
   props: ['xueke', 'xuekeid', 'index'],
   data: function () {
     return {
-      iconClass: ''
+      iconClass: '',
+      activeIndex: 1,
     };
   },
   created: function () {
     this.iconClass = 'icon10' + this.index
   },
   methods: {
-    showList: function () {
-      $(event.srcElement).addClass('on').siblings().removeClass('on');
+    showList: function ($event) {
+      console.log($event)
+      if($event.target.nodeName === 'SPAN') {
+
+        $(event.srcElement).addClass('on').siblings().removeClass('on');
+      }
       var list = getquestionlist();
       this.infomation.$emit('change-list', { 'list': list });
     }
   },
   template: `
   <span :title="xueke.xueke" 
-  :class="{on:index==1}"
+  :class="{on:index== activeIndex}"
   :data-xuekeid="xueke.id" 
-  @click="showList()"
+  @click="showList($event)"
   ><i :class="iconClass"></i>{{xueke.xueke}}</span>
   `
 })

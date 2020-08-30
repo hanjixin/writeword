@@ -69,7 +69,7 @@ var header = "\n<h1 class=\"logo\">\n  <a href=\"index.html\" title=\"\u534E\u56
 
 var footer = "\n<p class=\"width footnav\">\n  <a href=\"#\" title=\"\">\u534E\u56FE\u7B80\u4ECB</a>\n  <a href=\"#\" title=\"\">\u534E\u56FE\u8363\u8A89</a>\n  <a href=\"#\" title=\"\">\u534E\u56FE\u516C\u76CA</a>\n  <a href=\"#\" title=\"\">\u5A92\u4F53\u5173\u6CE8</a>\n  <a href=\"#\" title=\"\">\u8054\u7CFB\u6211\u4EEC</a>\n  <a href=\"#\" title=\"\">\u6CD5\u5F8B\u58F0\u660E</a>\n  <a href=\"#\" title=\"\">\u8D1F\u8D23\u58F0\u660E</a>\n  <a href=\"#\" title=\"\">\u7F51\u7AD9\u5BFC\u822A</a>\n  <a href=\"#\" title=\"\">\u6295\u8BC9\u4E0E\u5EFA\u8BAE</a>\n  <a href=\"#\" title=\"\">\u7533\u8BF7\u53CB\u94FE</a>\n  <a href=\"#\" title=\"\">\u52A0\u5165\u6211\u4EEC</a>\n</p>\n<p>\u4EACICP\u5907 11028696\u53F7 \u4EACICP\u8BC1090387\u53F7 \u4EAC\u516C\u7F51\u5B89\u5907 11010802010141 \u7535\u4FE1\u4E1A\u52A1\u5BA1\u6279\u30102009\u3011\u5B57\u7B2C233\u53F7\u51FD</p>\n";
 
-var popLayer = "\n<div class=\"pop-box pop-login\" id=\"popLogin\">\n  <span class=\"pop-close\" @click=\"closePop\"></span>\n  <h3 class=\"pop-tit\">\u767B\u5F55</h3>\n  <form id=\"loginForm\">\n    <div class=\"clearfix in-box\">\n      <input type=\"text\" class=\"in-text\" v-model=\"phone\" name=\"phone\" value=\"\" placeholder=\"\u8BF7\u8F93\u5165\u624B\u673A\u53F7\" autocomplete=\"off\">\n      <p class=\"war\" v-show=\"phoneMessage\">{{phoneMessage}}</p>\n    </div>\n    <div class=\"clearfix in-box verify-box\" id=\"verifyBox\" v-if=\"showVerify\">\n      <input type=\"text\" class=\"in-text\" v-model=\"verify\" name=\"verify\" value=\"\" placeholder=\"\u8BF7\u8F93\u5165\u9A8C\u8BC1\u7801\" autocomplete=\"off\">\n      <img class=\"verify-img\" :src=\"verifyUrl\" onClick=\"this.src= urlConfig.verify.url + '&' + Math.random(); \" alt=\"\u56FE\u5F62\u9A8C\u8BC1\u7801\" title=\"\u70B9\u51FB\u66F4\u6362\u9A8C\u8BC1\u7801\">\n      <p class=\"war\" v-show=\"verifyMessage\">{{verifyMessage}}</p>\n    </div>\n    <div class=\"clearfix in-box\">\n      <input type=\"text\" class=\"in-text\" v-model=\"code\" name=\"code\" value=\"\" placeholder=\"\u8BF7\u8F93\u5165\u77ED\u4FE1\u9A8C\u8BC1\u7801\" autocomplete=\"off\">\n      <input type=\"button\" class=\"codebtn\" v-bind:class=\"codebtnoff\" v-bind:disabled=\"disabled\" v-on:click=\"sendCode\" :value=\"sendCodeBtn\" >\n      <p class=\"tip\" v-show=\"loginMessage\">{{loginMessage}}</p>\n      <p class=\"war\" v-show=\"codeMessage\">{{codeMessage}}</p>\n    </div>\n    <input type=\"button\" class=\"loginbtn\" @click=\"login()\" value=\"\u5FEB\u901F\u767B\u5F55\">\n  </form>\n</div>\n";
+var popLayer = "\n<div class=\"pop-box pop-login\" id=\"popLogin\">\n  <span class=\"pop-close\" @click=\"closePop\"></span>\n  <h3 class=\"pop-tit\">\u767B\u5F55</h3>\n  <div class=\"login-tips\"></div>\n  <form id=\"loginForm\">\n    <div class=\"clearfix in-box\">\n      <input type=\"text\" class=\"in-text\" v-model=\"phone\" name=\"phone\" value=\"\" placeholder=\"\u8BF7\u8F93\u5165\u624B\u673A\u53F7\" autocomplete=\"off\">\n      <p class=\"war\" v-show=\"phoneMessage\">{{phoneMessage}}</p>\n    </div>\n    <div class=\"clearfix in-box verify-box\" id=\"verifyBox\" v-if=\"showVerify\">\n      <input type=\"text\" class=\"in-text\" v-model=\"verify\" name=\"verify\" value=\"\" placeholder=\"\u8BF7\u8F93\u5165\u9A8C\u8BC1\u7801\" autocomplete=\"off\">\n      <img class=\"verify-img\" :src=\"verifyUrl\" onClick=\"this.src= urlConfig.verify.url + '&' + Math.random(); \" alt=\"\u56FE\u5F62\u9A8C\u8BC1\u7801\" title=\"\u70B9\u51FB\u66F4\u6362\u9A8C\u8BC1\u7801\">\n      <p class=\"war\" v-show=\"verifyMessage\">{{verifyMessage}}</p>\n    </div>\n    <div class=\"clearfix in-box\">\n      <input type=\"text\" class=\"in-text\" v-model=\"code\" name=\"code\" value=\"\" placeholder=\"\u8BF7\u8F93\u5165\u77ED\u4FE1\u9A8C\u8BC1\u7801\" autocomplete=\"off\">\n      <input type=\"button\" class=\"codebtn\" v-bind:class=\"codebtnoff\" v-bind:disabled=\"disabled\" v-on:click=\"sendCode\" :value=\"sendCodeBtn\" >\n      <p class=\"tip\" v-show=\"loginMessage\">{{loginMessage}}</p>\n      <p class=\"war\" v-show=\"codeMessage\">{{codeMessage}}</p>\n    </div>\n    <input type=\"button\" class=\"loginbtn\" @click=\"login()\" value=\"\u5FEB\u901F\u767B\u5F55\">\n  </form>\n</div>\n";
 
 Vue.prototype.infomation = new Vue();
 
@@ -284,7 +284,7 @@ Vue.component('pop-layer', {
               that.loginMessage = null;
               that.codeError++;
               //短信验证码连续输入错误3次则必须输入图形验证码
-              if (that.codeError >= '3') {
+              if (that.codeError >= 3) {
                 that.showVerify = true;
               }
             } else {
@@ -314,6 +314,7 @@ Vue.component('pop-layer', {
     },
     closePop: function closePop(event) {
       $('#popLayer, #popReport').hide();
+      $('.login-tips').hide(); // 隐藏登录后才可查看报告
     }
   },
   template: popLayer

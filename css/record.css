@@ -154,6 +154,11 @@
 .record-list dt div:nth-child(1),
 .record-list dd div:nth-child(1) {
   width: 300px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  box-sizing: border-box;
+  padding: 0 10px;
 }
 
 .record-list dt div:nth-child(4),

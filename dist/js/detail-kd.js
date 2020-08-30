@@ -175,6 +175,7 @@ var computedSpee = function computedSpee() {
   // var speed = parseInt(messageLength / ((currentMinute * 60 + second) / 60))
   var speed = (messageLength / (currentMinute <= 1 ? 1 : (currentMinute * 60 + second) / 60)).toFixed(0);
   $('span .speed').text(speed + '字/分');
+  // $('span .speed').text(messageLength + `字/${(minute * 60 + second) / 60}分`);git
 };
 
 //计时器
@@ -199,16 +200,21 @@ function showTime() {
 
 //开始看打
 $('.kdbtn-box').on('click', '.startBtn', function () {
+
   if (nowTime != undefined) {
     //计时器已开启
   } else {
     nowTime = setInterval(function () {
       showTime();
+      if (second || minute) {
+        $('.resetBtn, .submitBtn').attr('disabled', false);
+        $('.resetBtn, .submitBtn').removeClass('disabled');
+      }
     }, 10);
   }
   $('.startBtn').val('暂停').removeClass('startBtn').addClass('pauseBtn');
-  $('.resetBtn, .submitBtn').attr('disabled', false);
-  $('.resetBtn, .submitBtn').removeClass('disabled');
+  // $('.resetBtn, .submitBtn').attr('disabled', false);
+  // $('.resetBtn, .submitBtn').removeClass('disabled');
 
   var inputObj = $('#kddetail .on input');
   inputObj.attr('disabled', false).focus();
@@ -297,11 +303,13 @@ new Vue({
 //提交
 $('.kdbtn-box').on('click', '.submitBtn', function () {
   // 停止计时
+
   window.clearInterval(nowTime);
   nowTime = undefined;
   // 判断登录
   if (!checkLogin()) {
     $('#popLayer').show();
+    $('.login-tips').text('亲，登录后才可查看报告哦！').show();
     return false;
   }
 
@@ -345,7 +353,7 @@ $('.kdbtn-box').on('click', '.submitBtn', function () {
   var report = {};
   report.usetime = $('#showTime').text();
   // report.rightrate = ((rightCount / totalCount)*100).toFixed(2)+'%';
-  report.rightrate = (rightCount / inputCount * 100).toFixed(2) + '%';
+  report.rightrate = (inputCount ? rightCount / inputCount * 100 : 0).toFixed(2) + '%';
   report.speed = parseInt($('.speed').text());
   report.backnum = parseInt($('.dtimes').text());
   report.errornum = errorCount;

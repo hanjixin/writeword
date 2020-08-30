@@ -171,6 +171,7 @@ table {
   float: right;
   position: relative;
   text-align: center;
+  z-index: 20;
 }
 
 .header-uid {
@@ -253,7 +254,7 @@ table {
 
 main {
   /* padding-top: 126px; */
-  height: 100%;
+  height: 85%;
   box-sizing: border-box;
 }
 
@@ -292,7 +293,13 @@ footer a:hover {
   z-index: 15;
   background: rgba( 0, 0, 0, .66);
 }
+.login-tips {
+  display: none;
+  font-size: 18px;
+  text-align: center;
+  padding-bottom: 20px;
 
+}
 /* 弹窗 */
 .pop-box {
   position: fixed;

@@ -5,20 +5,25 @@ Vue.component('left-nav', {
   props: ['xueke', 'xuekeid', 'index'],
   data: function data() {
     return {
-      iconClass: ''
+      iconClass: '',
+      activeIndex: 1
     };
   },
   created: function created() {
     this.iconClass = 'icon10' + this.index;
   },
   methods: {
-    showList: function showList() {
-      $(event.srcElement).addClass('on').siblings().removeClass('on');
+    showList: function showList($event) {
+      console.log($event);
+      if ($event.target.nodeName === 'SPAN') {
+
+        $(event.srcElement).addClass('on').siblings().removeClass('on');
+      }
       var list = getquestionlist();
       this.infomation.$emit('change-list', { 'list': list });
     }
   },
-  template: '\n  <span :title="xueke.xueke" \n  :class="{on:index==1}"\n  :data-xuekeid="xueke.id" \n  @click="showList()"\n  ><i :class="iconClass"></i>{{xueke.xueke}}</span>\n  '
+  template: '\n  <span :title="xueke.xueke" \n  :class="{on:index== activeIndex}"\n  :data-xuekeid="xueke.id" \n  @click="showList($event)"\n  ><i :class="iconClass"></i>{{xueke.xueke}}</span>\n  '
 });
 if ($('#leftNav').length > 0) {
   new Vue({

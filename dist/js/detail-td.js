@@ -274,10 +274,12 @@ new Vue({
 $('.tdbtn-box').on('click', '.submitBtn', function () {
   // 停止计时
   window.clearInterval(nowTime);
+  audio.pause();
   nowTime = undefined;
   // 判断登录
   if (!checkLogin()) {
     $('#popLayer').show();
+    $('.login-tips').text('亲，登录后才可查看报告哦！').show();
     return false;
   }
 
