@@ -25,7 +25,7 @@ let popReport = `
         <span>练习时间：{{createtime}}</span>
     </p>
     <p>
-        <span>音频速度：{{speed}}</span>
+        <span class="speed-adiou" v-if="speedAdiou">音频速度：{{speed}}</span>
     </p>
     <div class="clearfix btn-box">
         <a class="btn" :href="answerLink" title="查看答案">查看答案</a>
@@ -129,6 +129,7 @@ Vue.component('pop-report', {
       answerLink: null,
       reTestLink: null,
       moreQuestionLink: null,
+      speedAdiou: true
     }
   },
   created: function () {
@@ -147,9 +148,11 @@ Vue.component('pop-report', {
       if (data.questiontypeid == '161') {
         that.reTestLink = 'detail-td.html?xuekeid='+data.xuekeid+'&qid='+data.questionid;
         that.moreQuestionLink = 'list-td.html?xuekeid='+data.xuekeid;
+        that.speedAdiou = true
       } else {
         that.reTestLink = 'detail-kd.html?xuekeid='+data.xuekeid+'&qid='+data.questionid;
         that.moreQuestionLink = 'list-kd.html?xuekeid='+data.xuekeid;
+        that.speedAdiou = false
       }
     });
 

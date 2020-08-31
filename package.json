@@ -13,5 +13,8 @@
   "dependencies": {
     "shelljs": "^0.8.4",
     "watch": "^1.0.2"
+  },
+  "devDependencies": {
+    "babel-preset-es2015": "^6.24.1"
   }
 }

@@ -149,7 +149,7 @@ new Vue({
       questionData.answer = questionData.answer.replace(/([^0-9|^a-z|^A-Z|^\u4e00-\u9fa5])*/g, '');
     }
     var tmpLeng = questionData.answer.length;
-    var limitLeng = 56;
+    var limitLeng = 60;
 
     console.log(jsonData, jsonData.stem_arr);
     for (var i = 0; i < Math.ceil(tmpLeng / limitLeng); i++) {

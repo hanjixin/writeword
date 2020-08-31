@@ -70,7 +70,7 @@ var globalcrrentListType  //试题类型
 
 let header = `
 <h1 class="logo">
-  <a href="index.html" title="华图政法">华图政法</a>
+  <a href="http://zhaojing.huatu.com/" target="_blank" title="华图政法">华图政法</a>
   <em class="line"></em>
   <span>书记员速录系统</span>
 </h1>
@@ -93,17 +93,17 @@ let header = `
 
 let footer = `
 <p class="width footnav">
-  <a href="#" title="">华图简介</a>
-  <a href="#" title="">华图荣誉</a>
-  <a href="#" title="">华图公益</a>
-  <a href="#" title="">媒体关注</a>
-  <a href="#" title="">联系我们</a>
-  <a href="#" title="">法律声明</a>
-  <a href="#" title="">负责声明</a>
-  <a href="#" title="">网站导航</a>
-  <a href="#" title="">投诉与建议</a>
-  <a href="#" title="">申请友链</a>
-  <a href="#" title="">加入我们</a>
+  <a href="http://www.huatu.com/a/aboutus/" title="" target="_blank">华图简介</a>
+  <a href="http://www.huatu.com/a/aboutus/rongyu.html" title="" target="_blank">华图荣誉</a>
+  <a href="http://www.huatu.com/a/aboutus/gongyi.html" title="" target="_blank">华图公益</a>
+  <a href="http://www.huatu.com/a/aboutus/meiti.html" title="" target="_blank">媒体关注</a>
+  <a href="http://www.huatu.com/a/aboutus/lianxi.html" title="" target="_blank">联系我们</a>
+  <a href="http://www.huatu.com/a/aboutus/falv.html" title="" target="_blank">法律声明</a>
+  <a href="http://www.huatu.com/a/aboutus/mianze.html" title="" target="_blank">负责声明</a>
+  <a href="http://www.huatu.com/data/sitemap.html" title="" target="_blank">网站导航</a>
+  <a href="http://www.huatu.com/a/aboutus/yijian.html" title="" target="_blank">投诉与建议</a>
+  <a href="http://www.huatu.com/a/aboutus/link.html" title="" target="_blank">申请友链</a>
+  <a href="http://www.huatu.com/z/job/" title="" target="_blank">加入我们</a>
 </p>
 <p>京ICP备 11028696号 京ICP证090387号 京公网安备 11010802010141 电信业务审批【2009】字第233号函</p>
 `;
@@ -298,13 +298,21 @@ Vue.component('pop-layer', {
 
       if (!this.phone) {
         this.phoneMessage = '请输入手机号';
-        return false;
+        // return false;
       } else{
         if (!(/^(1[0-9]{10})$/.test(this.phone))) {
           this.phoneMessage = '请输入有效的手机号码！';
-          return false;
+          // return false;
         } else{
           this.phoneMessage = null;
+        }
+      }
+      if(this.showVerify) {
+        if( !this.verify){
+          this.verifyMessage = '请输入图片验证码';
+          // return false;
+        }else{
+          this.verifyMessage = null;
         }
       }
       
@@ -316,12 +324,12 @@ Vue.component('pop-layer', {
         this.codeMessage = null;
         this.loginMessage = '新用户登录后将自动创建账号';
       }
-      if(this.showVerify && !this.verify){
-        this.verifyMessage = '请输入图片验证码';
-        return false;
-      }else{
-        this.verifyMessage = null;
-      }
+      // if(this.showVerify && !this.verify){
+      //   this.verifyMessage = '请输入图片验证码';
+      //   return false;
+      // }else{
+      //   this.verifyMessage = null;
+      // }
       var sendData = {
         'phone': this.phone,
         'timestamp': Date.parse(new Date()) / 1000,
@@ -387,6 +395,7 @@ Vue.component('pop-layer', {
     closePop: function (event) {
       $('#popLayer, #popReport').hide();
       $('.login-tips').hide()// 隐藏登录后才可查看报告
+      $('.pop-box h3').show();
     }
   },
   template: popLayer

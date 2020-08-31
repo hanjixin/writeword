@@ -171,7 +171,7 @@ table {
   float: right;
   position: relative;
   text-align: center;
-  z-index: 20;
+  z-index: 10;
 }
 
 .header-uid {
@@ -200,6 +200,8 @@ table {
   border: solid 1px rgba(192, 192, 192, 0.3);
   z-index: 10;
   overflow: hidden;
+  position: absolute;
+  width: 100%;
 }
 
 .if-login:hover .header-uchosse {
@@ -295,7 +297,7 @@ footer a:hover {
 }
 .login-tips {
   display: none;
-  font-size: 18px;
+  font-size: 24px;
   text-align: center;
   padding-bottom: 20px;
 

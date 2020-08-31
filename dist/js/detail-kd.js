@@ -52,17 +52,31 @@ Vue.component('kddetail', {
     };
   },
   created: function created() {
+    var _this = this;
+
     this.nameIndex = 'inputarr' + this.index;
     this.inputMessage = '';
+    console.log('__________', this.index);
+    this.infomation.$on('kddetailCompare', function (_ref) {
+      var index = _ref.index,
+          msg = _ref.msg;
+
+      if (_this.index === index) {
+        console.log(index, '__________', _this.index);
+        _this.inputMessage = msg;
+        _this.compare();
+      }
+    });
   },
   methods: {
     //比较
     compare: function compare() {
       var message = this.stem;
+      var allinputMessage = this.inputMessage;
+      this.inputMessage = this.inputMessage.substring(0, message.length);
       var inputMessage = this.inputMessage;
       var messageArr = message.split('');
       // var messageLength = 0;
-
       for (var i = 0; i < inputMessage.length; i++) {
         if (message[i] == inputMessage[i]) {
           messageArr[i] = '<span class="right">' + message[i] + '</span>';
@@ -81,7 +95,8 @@ Vue.component('kddetail', {
       // var speed = parseInt(messageLength / currentMinute)
       // $('span .speed').text(speed + '字/分');
 
-      if (inputMessage.length == message.length) {
+      if (allinputMessage.length >= message.length) {
+        // inputMessage = inputMessage.substring(0,message.length)
         var nextLiObj = $('p[p-identify=' + this.index + ']').parent('li').removeClass('on').next();
         if (nextLiObj.length == 0) {
           $('p[p-identify=' + this.index + ']').parent('li').addClass('on');
@@ -89,6 +104,13 @@ Vue.component('kddetail', {
         }
         nextLiObj.addClass('on');
         nextLiObj.find('input').attr('disabled', false).focus();
+        // nextLiObj.find('input').val()
+        // console.log(this)
+        this.infomation.$emit('kddetailCompare', {
+          index: this.index + 1,
+          msg: allinputMessage.substring(message.length, allinputMessage.length)
+        });
+
         return false;
       }
     },
@@ -110,10 +132,10 @@ Vue.component('kddetail', {
       //this.deleteCount++;
     }
   },
-  template: '\n    <li :index="index"\n        :class="{on:index==0}"\n    >\n    <p :p-identify="index">{{stem}}</p>\n    <input type="text" class="in-text" autocomplete="off" disabled oncopy="return false" onpaste="return false"\n        :maxlength="stem.length"\n        :name="nameIndex"\n        v-model="inputMessage"\n        @keyup="compare()" \n        @keydown.delete="deleteK()"\n    >\n    </li>'
+  template: '\n    <li :index="index"\n        :class="{on:index==0}"\n    >\n    <p :p-identify="index">{{stem}}</p>\n    <input type="text" class="in-text" autocomplete="off" disabled oncopy="return false" onpaste="return false"\n        :name="nameIndex"\n        v-model="inputMessage"\n        @keyup="compare()" \n        @change="compare()"\n        @keydown.delete="deleteK()"\n    >\n    </li>'
 });
 
-new Vue({
+var kdDetail = new Vue({
   el: '#kddetail',
   data: {
     deleteCount: 0
@@ -172,10 +194,12 @@ var computedSpee = function computedSpee() {
 
   //打字速度
   var currentMinute = minute <= 0 ? 1 : minute;
-  // var speed = parseInt(messageLength / ((currentMinute * 60 + second) / 60))
-  var speed = (messageLength / (currentMinute <= 1 ? 1 : (currentMinute * 60 + second) / 60)).toFixed(0);
+  // console.log(second)
+  var currentSecond = second <= 0 ? 1 : second;
+  var speed = parseInt(messageLength / ((minute * 60 + currentSecond) / 60));
+  // var speed = (messageLength / (currentMinute <=1 ? 1 : ((currentMinute * 60 + second) / 60))).toFixed(0)
   $('span .speed').text(speed + '字/分');
-  // $('span .speed').text(messageLength + `字/${(minute * 60 + second) / 60}分`);git
+  // $('span .speed').text(messageLength + `字/${(minute * 60 + second) / 60}分`);
 };
 
 //计时器
@@ -186,10 +210,11 @@ var nowTime;
 var i = 0;
 function showTime() {
   millisecond++;
-  if (millisecond >= 100) {
-    millisecond = 0;
-    second++;
-  }
+  // if (millisecond >= 100) {
+  //   millisecond = 0;
+  //   second++;
+  // }
+  second++;
   if (second >= 60) {
     second = 0;
     minute++;
@@ -205,12 +230,13 @@ $('.kdbtn-box').on('click', '.startBtn', function () {
     //计时器已开启
   } else {
     nowTime = setInterval(function () {
+      console.log(11);
       showTime();
       if (second || minute) {
         $('.resetBtn, .submitBtn').attr('disabled', false);
         $('.resetBtn, .submitBtn').removeClass('disabled');
       }
-    }, 10);
+    }, 1000);
   }
   $('.startBtn').val('暂停').removeClass('startBtn').addClass('pauseBtn');
   // $('.resetBtn, .submitBtn').attr('disabled', false);
@@ -235,7 +261,7 @@ $('.kdbtn-box').on('click', '.pauseBtn', function () {
 $('.kdbtn-box').on('click', '.continueBtn', function () {
   nowTime = setInterval(function () {
     showTime();
-  }, 10);
+  }, 1000);
   $('.continueBtn').val('暂停').removeClass('continueBtn').addClass('pauseBtn');
 
   var inputObj = $('#kddetail .on input');
@@ -245,6 +271,12 @@ $('.kdbtn-box').on('click', '.continueBtn', function () {
 //重做
 $('.kdbtn-box').on('click', '.resetBtn', function () {
   location.reload();
+});
+// 关闭登录弹窗
+$('.pop-close').click(function () {
+  nowTime = setInterval(function () {
+    showTime();
+  }, 1000);
 });
 
 //报告弹窗
@@ -309,6 +341,7 @@ $('.kdbtn-box').on('click', '.submitBtn', function () {
   // 判断登录
   if (!checkLogin()) {
     $('#popLayer').show();
+    $('.pop-box h3').hide();
     $('.login-tips').text('亲，登录后才可查看报告哦！').show();
     return false;
   }

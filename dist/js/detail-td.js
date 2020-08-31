@@ -42,8 +42,10 @@ var computedSpee = function computedSpee() {
   var messageLength = 0;
   messageLength = tddetail.textMessage.length;
   var currentMinute = minute <= 0 ? 1 : minute;
+  var currentSecond = second <= 0 ? 1 : second;
   console.log(messageLength, currentMinute, minute);
-  var speed = parseInt(messageLength / currentMinute);
+  // var speed = parseInt( messageLength / currentMinute)
+  var speed = parseInt(messageLength / ((minute * 60 + currentSecond) / 60));
   $('span .speed').text(speed + '字/分');
 };
 //计时器
@@ -216,6 +218,25 @@ $('.tdbtn-box').on('click', '.continueBtn', function () {
 $('.tdbtn-box').on('click', '.resetBtn', function () {
   location.reload();
 });
+// 关闭登录弹窗
+$('.pop-close').click(function () {
+  console.log($('.continueBtn').val());
+  if ($('.continueBtn').val() == '继续') {
+    // return
+  } else {
+    nowTime = setInterval(function () {
+      showTime();
+    }, 1000);
+    if (ifAudioPlay) {
+      audio.play();
+    }
+    $('.continueBtn').val('暂停').removeClass('continueBtn').addClass('pauseBtn');
+  }
+});
+$('.else-login').click(function () {
+  window.clearInterval(nowTime);
+  audio.pause();
+});
 
 //报告弹窗
 Vue.component('pop-report', {
@@ -279,6 +300,7 @@ $('.tdbtn-box').on('click', '.submitBtn', function () {
   // 判断登录
   if (!checkLogin()) {
     $('#popLayer').show();
+    $('.pop-box h3').hide();
     $('.login-tips').text('亲，登录后才可查看报告哦！').show();
     return false;
   }

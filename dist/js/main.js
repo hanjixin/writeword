@@ -65,9 +65,9 @@ var urlConfig = {
 };
 var globalcrrentListType; //试题类型
 
-var header = "\n<h1 class=\"logo\">\n  <a href=\"index.html\" title=\"\u534E\u56FE\u653F\u6CD5\">\u534E\u56FE\u653F\u6CD5</a>\n  <em class=\"line\"></em>\n  <span>\u4E66\u8BB0\u5458\u901F\u5F55\u7CFB\u7EDF</span>\n</h1>\n<div class=\"fr\" id=\"hlogin\">\n  <!-- \u9876\u90E8\u5BFC\u822A -->\n  <a class=\"h-nav\" :class=\"{'on':ifkd}\" href=\"list-kd.html\" title=\"\u770B\u6253\u7EC3\u4E60\">\u770B\u6253\u7EC3\u4E60</a>\n  <a class=\"h-nav\" :class=\"{'on':iftd}\" href=\"list-td.html\" title=\"\u542C\u6253\u7EC3\u4E60\">\u542C\u6253\u7EC3\u4E60</a>\n  <!-- \u5DF2\u767B\u5F55 -->\n  <div class=\"if-login\" v-if=\"iflogin\">\n    <span class=\"header-uid\">{{ phone_hide }}</span>\n    <div class=\"header-uchosse\">\n      <a href=\"record.html\" title=\"\u7EC3\u4E60\u8BB0\u5F55\">\u7EC3\u4E60\u8BB0\u5F55</a>\n      <span title=\"\u70B9\u51FB\u9000\u51FA\" v-on:click=\"logout\">\u9000\u51FA</span>\n    </div>\n  </div>\n  <!-- \u672A\u767B\u5F55 -->\n  <span class=\"else-login\" v-else v-on:click=\"showLoingPop()\"><i class=\"icon01\"></i>\u5FEB\u901F\u767B\u5F55</span>\n</div>\n";
+var header = "\n<h1 class=\"logo\">\n  <a href=\"http://zhaojing.huatu.com/\" target=\"_blank\" title=\"\u534E\u56FE\u653F\u6CD5\">\u534E\u56FE\u653F\u6CD5</a>\n  <em class=\"line\"></em>\n  <span>\u4E66\u8BB0\u5458\u901F\u5F55\u7CFB\u7EDF</span>\n</h1>\n<div class=\"fr\" id=\"hlogin\">\n  <!-- \u9876\u90E8\u5BFC\u822A -->\n  <a class=\"h-nav\" :class=\"{'on':ifkd}\" href=\"list-kd.html\" title=\"\u770B\u6253\u7EC3\u4E60\">\u770B\u6253\u7EC3\u4E60</a>\n  <a class=\"h-nav\" :class=\"{'on':iftd}\" href=\"list-td.html\" title=\"\u542C\u6253\u7EC3\u4E60\">\u542C\u6253\u7EC3\u4E60</a>\n  <!-- \u5DF2\u767B\u5F55 -->\n  <div class=\"if-login\" v-if=\"iflogin\">\n    <span class=\"header-uid\">{{ phone_hide }}</span>\n    <div class=\"header-uchosse\">\n      <a href=\"record.html\" title=\"\u7EC3\u4E60\u8BB0\u5F55\">\u7EC3\u4E60\u8BB0\u5F55</a>\n      <span title=\"\u70B9\u51FB\u9000\u51FA\" v-on:click=\"logout\">\u9000\u51FA</span>\n    </div>\n  </div>\n  <!-- \u672A\u767B\u5F55 -->\n  <span class=\"else-login\" v-else v-on:click=\"showLoingPop()\"><i class=\"icon01\"></i>\u5FEB\u901F\u767B\u5F55</span>\n</div>\n";
 
-var footer = "\n<p class=\"width footnav\">\n  <a href=\"#\" title=\"\">\u534E\u56FE\u7B80\u4ECB</a>\n  <a href=\"#\" title=\"\">\u534E\u56FE\u8363\u8A89</a>\n  <a href=\"#\" title=\"\">\u534E\u56FE\u516C\u76CA</a>\n  <a href=\"#\" title=\"\">\u5A92\u4F53\u5173\u6CE8</a>\n  <a href=\"#\" title=\"\">\u8054\u7CFB\u6211\u4EEC</a>\n  <a href=\"#\" title=\"\">\u6CD5\u5F8B\u58F0\u660E</a>\n  <a href=\"#\" title=\"\">\u8D1F\u8D23\u58F0\u660E</a>\n  <a href=\"#\" title=\"\">\u7F51\u7AD9\u5BFC\u822A</a>\n  <a href=\"#\" title=\"\">\u6295\u8BC9\u4E0E\u5EFA\u8BAE</a>\n  <a href=\"#\" title=\"\">\u7533\u8BF7\u53CB\u94FE</a>\n  <a href=\"#\" title=\"\">\u52A0\u5165\u6211\u4EEC</a>\n</p>\n<p>\u4EACICP\u5907 11028696\u53F7 \u4EACICP\u8BC1090387\u53F7 \u4EAC\u516C\u7F51\u5B89\u5907 11010802010141 \u7535\u4FE1\u4E1A\u52A1\u5BA1\u6279\u30102009\u3011\u5B57\u7B2C233\u53F7\u51FD</p>\n";
+var footer = "\n<p class=\"width footnav\">\n  <a href=\"http://www.huatu.com/a/aboutus/\" title=\"\" target=\"_blank\">\u534E\u56FE\u7B80\u4ECB</a>\n  <a href=\"http://www.huatu.com/a/aboutus/rongyu.html\" title=\"\" target=\"_blank\">\u534E\u56FE\u8363\u8A89</a>\n  <a href=\"http://www.huatu.com/a/aboutus/gongyi.html\" title=\"\" target=\"_blank\">\u534E\u56FE\u516C\u76CA</a>\n  <a href=\"http://www.huatu.com/a/aboutus/meiti.html\" title=\"\" target=\"_blank\">\u5A92\u4F53\u5173\u6CE8</a>\n  <a href=\"http://www.huatu.com/a/aboutus/lianxi.html\" title=\"\" target=\"_blank\">\u8054\u7CFB\u6211\u4EEC</a>\n  <a href=\"http://www.huatu.com/a/aboutus/falv.html\" title=\"\" target=\"_blank\">\u6CD5\u5F8B\u58F0\u660E</a>\n  <a href=\"http://www.huatu.com/a/aboutus/mianze.html\" title=\"\" target=\"_blank\">\u8D1F\u8D23\u58F0\u660E</a>\n  <a href=\"http://www.huatu.com/data/sitemap.html\" title=\"\" target=\"_blank\">\u7F51\u7AD9\u5BFC\u822A</a>\n  <a href=\"http://www.huatu.com/a/aboutus/yijian.html\" title=\"\" target=\"_blank\">\u6295\u8BC9\u4E0E\u5EFA\u8BAE</a>\n  <a href=\"http://www.huatu.com/a/aboutus/link.html\" title=\"\" target=\"_blank\">\u7533\u8BF7\u53CB\u94FE</a>\n  <a href=\"http://www.huatu.com/z/job/\" title=\"\" target=\"_blank\">\u52A0\u5165\u6211\u4EEC</a>\n</p>\n<p>\u4EACICP\u5907 11028696\u53F7 \u4EACICP\u8BC1090387\u53F7 \u4EAC\u516C\u7F51\u5B89\u5907 11010802010141 \u7535\u4FE1\u4E1A\u52A1\u5BA1\u6279\u30102009\u3011\u5B57\u7B2C233\u53F7\u51FD</p>\n";
 
 var popLayer = "\n<div class=\"pop-box pop-login\" id=\"popLogin\">\n  <span class=\"pop-close\" @click=\"closePop\"></span>\n  <h3 class=\"pop-tit\">\u767B\u5F55</h3>\n  <div class=\"login-tips\"></div>\n  <form id=\"loginForm\">\n    <div class=\"clearfix in-box\">\n      <input type=\"text\" class=\"in-text\" v-model=\"phone\" name=\"phone\" value=\"\" placeholder=\"\u8BF7\u8F93\u5165\u624B\u673A\u53F7\" autocomplete=\"off\">\n      <p class=\"war\" v-show=\"phoneMessage\">{{phoneMessage}}</p>\n    </div>\n    <div class=\"clearfix in-box verify-box\" id=\"verifyBox\" v-if=\"showVerify\">\n      <input type=\"text\" class=\"in-text\" v-model=\"verify\" name=\"verify\" value=\"\" placeholder=\"\u8BF7\u8F93\u5165\u9A8C\u8BC1\u7801\" autocomplete=\"off\">\n      <img class=\"verify-img\" :src=\"verifyUrl\" onClick=\"this.src= urlConfig.verify.url + '&' + Math.random(); \" alt=\"\u56FE\u5F62\u9A8C\u8BC1\u7801\" title=\"\u70B9\u51FB\u66F4\u6362\u9A8C\u8BC1\u7801\">\n      <p class=\"war\" v-show=\"verifyMessage\">{{verifyMessage}}</p>\n    </div>\n    <div class=\"clearfix in-box\">\n      <input type=\"text\" class=\"in-text\" v-model=\"code\" name=\"code\" value=\"\" placeholder=\"\u8BF7\u8F93\u5165\u77ED\u4FE1\u9A8C\u8BC1\u7801\" autocomplete=\"off\">\n      <input type=\"button\" class=\"codebtn\" v-bind:class=\"codebtnoff\" v-bind:disabled=\"disabled\" v-on:click=\"sendCode\" :value=\"sendCodeBtn\" >\n      <p class=\"tip\" v-show=\"loginMessage\">{{loginMessage}}</p>\n      <p class=\"war\" v-show=\"codeMessage\">{{codeMessage}}</p>\n    </div>\n    <input type=\"button\" class=\"loginbtn\" @click=\"login()\" value=\"\u5FEB\u901F\u767B\u5F55\">\n  </form>\n</div>\n";
 
@@ -229,13 +229,21 @@ Vue.component('pop-layer', {
 
       if (!this.phone) {
         this.phoneMessage = '请输入手机号';
-        return false;
+        // return false;
       } else {
         if (!/^(1[0-9]{10})$/.test(this.phone)) {
           this.phoneMessage = '请输入有效的手机号码！';
-          return false;
+          // return false;
         } else {
           this.phoneMessage = null;
+        }
+      }
+      if (this.showVerify) {
+        if (!this.verify) {
+          this.verifyMessage = '请输入图片验证码';
+          // return false;
+        } else {
+          this.verifyMessage = null;
         }
       }
 
@@ -247,12 +255,12 @@ Vue.component('pop-layer', {
         this.codeMessage = null;
         this.loginMessage = '新用户登录后将自动创建账号';
       }
-      if (this.showVerify && !this.verify) {
-        this.verifyMessage = '请输入图片验证码';
-        return false;
-      } else {
-        this.verifyMessage = null;
-      }
+      // if(this.showVerify && !this.verify){
+      //   this.verifyMessage = '请输入图片验证码';
+      //   return false;
+      // }else{
+      //   this.verifyMessage = null;
+      // }
       var sendData = {
         'phone': this.phone,
         'timestamp': Date.parse(new Date()) / 1000,
@@ -315,6 +323,7 @@ Vue.component('pop-layer', {
     closePop: function closePop(event) {
       $('#popLayer, #popReport').hide();
       $('.login-tips').hide(); // 隐藏登录后才可查看报告
+      $('.pop-box h3').show();
     }
   },
   template: popLayer

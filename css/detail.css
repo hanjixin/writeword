@@ -60,7 +60,7 @@
   text-overflow: ellipsis;
   margin-left: 35px;
   color: #000;
-  font-size: 24px;
+  font-size: 23px;
   font-weight: normal;
 }
 
@@ -144,8 +144,9 @@
 
 .kddetail-pro p {
   margin-bottom: 5px;
-  font-size: 14px;
+  font-size: 15px;
   line-height: 24px; 
+  letter-spacing: -1px;
 }
 
 .kddetail-pro p span.error {

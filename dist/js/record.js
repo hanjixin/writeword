@@ -1,6 +1,6 @@
 'use strict';
 
-var popReport = '\n<div class="pop-box pop-report">\n    <span class="pop-close" @click="closePop"></span>\n    <h3 class="pop-tit minpop-tit">\u7EC3\u4E60\u62A5\u544A</h3>\n    <table>\n        <tr>\n            <th>\u7EC3\u4E60\u7528\u65F6</th>\n            <th>\u6B63\u786E\u7387</th>\n            <th>\u6253\u5B57\u901F\u5EA6</th>\n            <th>\u9000\u683C\u6B21\u6570</th>\n            <th>\u9519\u8BEF\u6B21\u6570</th>\n        </tr>\n        <tr>\n            <td><span class="usetime">{{report.usetime}}</span></td>\n            <td><span class="rightrate">{{report.rightrate}}</span></td>\n            <td><span class="speed">{{report.speed}}</span>\u5B57/\u5206</td>\n            <td><span class="backnum">{{report.backnum}}</span></td>\n            <td><span class="errornum">{{report.errornum}}</span></td>\n        </tr>\n    </table>\n    <p>\n        <span>\u79D1\u76EE\u7C7B\u522B\uFF1A{{questiontypename}}</span>\n        <span>\u7EC3\u4E60\u8BD5\u5377\uFF1A{{stem}}</span>\n        <span>\u7EC3\u4E60\u65F6\u95F4\uFF1A{{createtime}}</span>\n    </p>\n    <p>\n        <span>\u97F3\u9891\u901F\u5EA6\uFF1A{{speed}}</span>\n    </p>\n    <div class="clearfix btn-box">\n        <a class="btn" :href="answerLink" title="\u67E5\u770B\u7B54\u6848">\u67E5\u770B\u7B54\u6848</a>\n        <a class="btn" :href="reTestLink" title="\u518D\u6B21\u7EC3\u4E60">\u518D\u6B21\u7EC3\u4E60</a>\n        <a class="btn more" :href="moreQuestionLink" title="\u5176\u4ED6\u7EC3\u4E60">\u5176\u4ED6\u7EC3\u4E60</a>\n    </div>\n</div>\n';
+var popReport = '\n<div class="pop-box pop-report">\n    <span class="pop-close" @click="closePop"></span>\n    <h3 class="pop-tit minpop-tit">\u7EC3\u4E60\u62A5\u544A</h3>\n    <table>\n        <tr>\n            <th>\u7EC3\u4E60\u7528\u65F6</th>\n            <th>\u6B63\u786E\u7387</th>\n            <th>\u6253\u5B57\u901F\u5EA6</th>\n            <th>\u9000\u683C\u6B21\u6570</th>\n            <th>\u9519\u8BEF\u6B21\u6570</th>\n        </tr>\n        <tr>\n            <td><span class="usetime">{{report.usetime}}</span></td>\n            <td><span class="rightrate">{{report.rightrate}}</span></td>\n            <td><span class="speed">{{report.speed}}</span>\u5B57/\u5206</td>\n            <td><span class="backnum">{{report.backnum}}</span></td>\n            <td><span class="errornum">{{report.errornum}}</span></td>\n        </tr>\n    </table>\n    <p>\n        <span>\u79D1\u76EE\u7C7B\u522B\uFF1A{{questiontypename}}</span>\n        <span>\u7EC3\u4E60\u8BD5\u5377\uFF1A{{stem}}</span>\n        <span>\u7EC3\u4E60\u65F6\u95F4\uFF1A{{createtime}}</span>\n    </p>\n    <p>\n        <span class="speed-adiou" v-if="speedAdiou">\u97F3\u9891\u901F\u5EA6\uFF1A{{speed}}</span>\n    </p>\n    <div class="clearfix btn-box">\n        <a class="btn" :href="answerLink" title="\u67E5\u770B\u7B54\u6848">\u67E5\u770B\u7B54\u6848</a>\n        <a class="btn" :href="reTestLink" title="\u518D\u6B21\u7EC3\u4E60">\u518D\u6B21\u7EC3\u4E60</a>\n        <a class="btn more" :href="moreQuestionLink" title="\u5176\u4ED6\u7EC3\u4E60">\u5176\u4ED6\u7EC3\u4E60</a>\n    </div>\n</div>\n';
 
 //判断登录
 if (!checkLogin()) {
@@ -83,7 +83,8 @@ Vue.component('pop-report', {
       xuekename: null,
       answerLink: null,
       reTestLink: null,
-      moreQuestionLink: null
+      moreQuestionLink: null,
+      speedAdiou: true
     };
   },
   created: function created() {
@@ -102,9 +103,11 @@ Vue.component('pop-report', {
       if (data.questiontypeid == '161') {
         that.reTestLink = 'detail-td.html?xuekeid=' + data.xuekeid + '&qid=' + data.questionid;
         that.moreQuestionLink = 'list-td.html?xuekeid=' + data.xuekeid;
+        that.speedAdiou = true;
       } else {
         that.reTestLink = 'detail-kd.html?xuekeid=' + data.xuekeid + '&qid=' + data.questionid;
         that.moreQuestionLink = 'list-kd.html?xuekeid=' + data.xuekeid;
+        that.speedAdiou = false;
       }
     });
   },

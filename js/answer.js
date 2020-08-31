@@ -167,7 +167,7 @@ new Vue({
       );
     }
     var tmpLeng = questionData.answer.length;
-    var limitLeng = 56;
+    var limitLeng = 60;
 
     console.log(jsonData, jsonData.stem_arr);
     for (var i = 0; i < Math.ceil(tmpLeng / limitLeng); i++) {
